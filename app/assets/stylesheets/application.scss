@@ -11,4 +11,34 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
  @import "bootstrap";
+ @import "font-awesome";
+
+ $dark-color: #555;
+ $light-color: #ddd;
+
+ body {
+   background-color: $light-color;
+ }
+
+ .fa {
+   margin-left : 10px;
+   margin-right : 10px;
+   color: $dark-color;
+ }
+
+ .left-bar {
+  background-color: $dark-color;
+ }
+
+ .fa-twitter {
+   margin-left: 20px;
+   font-size: 150%;
+ }
+
+ .tuit-body {
+  border-top: 1px solid $light-color;
+  padding-top: 15px;
+  padding-bottom: 15px;
+ }

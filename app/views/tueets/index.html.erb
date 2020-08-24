@@ -1,0 +1,15 @@
+<%= render 'form' %>
+
+<table class="m-2">
+  <tr>
+    <th class="text-primary">TUEETS</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @tueets.each do |tueet| %>
+    <tr class="tuit-body bg-light">
+      <td><%= tueet.tueet %></td>
+      <td><%= link_to 'Show', tueet_path(tueet) %></td>
+    </tr>
+  <% end %>
+</table>
