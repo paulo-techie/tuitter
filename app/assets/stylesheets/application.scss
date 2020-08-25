@@ -17,9 +17,18 @@
 
  $dark-color: #555;
  $light-color: #ddd;
+ $tuit-color: #1DA1F2;
 
  body {
-   background-color: $light-color;
+   background-color: #efefef;
+ }
+
+ .bg-primary {
+   background-color: $tuit-color !important;
+ }
+
+ .text-primary {
+   color: $tuit-color !important;
  }
 
  .fa {
@@ -38,7 +47,12 @@
  }
 
  .tuit-body {
+  background-color: #fff ;
   border-top: 1px solid $light-color;
   padding-top: 15px;
   padding-bottom: 15px;
+ }
+
+ .tuit-body:hover {
+  background-color: lighten($tuit-color, 42%) !important;
  }

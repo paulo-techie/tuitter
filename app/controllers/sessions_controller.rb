@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     render 'new', notice: 'Invalid login' and return unless user
     session[:user_id] = user.id
  
-    redirect_to root_path, notice: 'You have been signed in!'
+    redirect_to user_tueets_path(user)
   end
 
   # def auth

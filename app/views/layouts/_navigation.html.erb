@@ -1,10 +1,13 @@
   <div class="d-flex">
     <nav class="col-md-2 left-bar">
-      <% if current_user %><%= current_user.fullname.upcase %>::  
-        <%= link_to "Log Out", logout_path %>  
+    <h6 class="text-light">
+      <% if current_user %><%= current_user.fullname.upcase %>
+    </h6>
+      <%= link_to "Log Out", logout_path %>  
       <% else %>  
-        <%= link_to "Sign Up", signup_path %> or  
-        <%= link_to "Log In", login_path %>  
+      <%= link_to "Sign Up", signup_path %>
+      <br/>  
+      <%= link_to "Log In", login_path %>  
     <% end %>  
     </nav>
     <nav class="navbar navbar-expand-md navbar-dark bg-primary col-md-10 sticky-top">

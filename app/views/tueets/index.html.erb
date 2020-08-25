@@ -7,9 +7,15 @@
   </tr>
 
   <% @tueets.each do |tueet| %>
-    <tr class="tuit-body bg-light">
-      <td><%= tueet.tueet %></td>
-      <td><%= link_to 'Show', tueet_path(tueet) %></td>
+    <% u = User.find(tueet.user_id) %>
+    <tr class="tuit-body d-block">
+      <td>
+        <strong class="text-capitalize"><%= u.fullname %>&nbsp;</strong>
+        @<%= u.username %> · 
+         <small><%= time_ago_in_words(tueet.created_at) %></small>
+        <br/>
+        <%= tueet.tueet %>
+      </td>
     </tr>
   <% end %>
 </table>
