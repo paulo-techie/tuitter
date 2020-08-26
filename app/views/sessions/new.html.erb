@@ -1,9 +1,8 @@
 <div class="form-signin mt-2">
 <%= form_tag sessions_path do %>
+  <h1 class="my-2 text-primary font-weight-bold">Tuitter</h1>
   <%= image_tag('tuitwhitelogo.png') %>
-  <img class="m-4" src="tuitterwhitelogo.png" alt="" width="64" height="64">
-
-  <h2 class="mb-3 font-weight-bold">Sign in</h2>
+  <h4 class="my-3 font-weight-bold">Sign in</h4>
   <p><%= text_field_tag :username, nil, placeholder: "Username" %></p>
   <p><%= submit_tag "Log in", class: "btn btn-sm btn-primary" %></p>
   <br/>

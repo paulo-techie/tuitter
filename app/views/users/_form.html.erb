@@ -1,8 +1,8 @@
  <div class="form-signin mt-2">
     <%= form_with(model: user, local: true) do |form| %>
+    <h1 class="my-2 text-primary font-weight-bold">Tuitter</h1>
     <%= image_tag('tuitwhitelogo.png') %>
-    <img class="m-4" src="tuitterwhitelogo.png" alt="" width="64" height="64">
-    <h2 class="mb-3 font-weight-bold">Sign up</h2>
+    <h4 class="my-3 font-weight-bold">Sign up</h4>
 
       <% if user.errors.any? %>
         <div class="alert alert-danger" role="alert">
