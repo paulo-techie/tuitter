@@ -10,8 +10,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navigation' %>
-    <p id="notice"><%= notice %></p>
+    <% if current_user %>
+      <%= render 'layouts/navigation' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

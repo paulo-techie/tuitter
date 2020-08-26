@@ -72,8 +72,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:fullname, :username)
     end
-
-    # def self.find_user_by(value)
-    #   where(["username = :value", {value: value}]).first
-    # end
 end

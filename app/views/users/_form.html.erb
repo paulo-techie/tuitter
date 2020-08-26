@@ -1,27 +1,26 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+ <div class="form-signin mt-2">
+    <%= form_with(model: user, local: true) do |form| %>
+    <%= image_tag('tuitwhitelogo.png') %>
+    <img class="m-4" src="tuitterwhitelogo.png" alt="" width="64" height="64">
+    <h2 class="mb-3 font-weight-bold">Sign up</h2>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <% if user.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h6><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h6>
+          <ul>
+            <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :fullname %>
-    <%= form.text_field :fullname %>
-  </div>
+      <p><%= form.text_field :fullname, placeholder: "Full Name" %></p>
+      <p><%= form.text_field :username, placeholder: "Username" %></p>
+      <p><%= form.submit "Sign up", class: "btn btn-sm btn-primary" %></p>
+      <br/>
+      <h6 class="mb-3 font-weight-bold">Or sign in</h6>
+      <p><%= link_to "Sign in", login_path, class: "btn btn-sm btn-primary" %></p>
+      <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+<div class="d-flex p-2 flex-row">
+  <% if current_user != user %>
+  <%= image_tag('tuitter-egg.jpg', size: "48x48", class: "mr-2") %>
+  <h6 class="text-capitalize rt-bar"><%= user.fullname %></h6>
+    <% end %>
+</div>
+<% end %>

@@ -1,9 +1,9 @@
-<%= form_with scope: :tueet, url: user_tueets_path, html: {class: "bg-light m-2 p-2"}, local: true do |form| %>
-  <p>
+<%= form_with scope: :tueet, url: user_tueets_path, local: true do |form| %>
+  <div class="form-group">
     <%= form.label 'TUEET SOMETHING', class: "text-secondary h6" %><br>
-    <%= form.text_area :tueet, placeholder: "Compose new tueet" %>
-  </p>
-  <p>
-    <%= form.submit 'Tueet', class: "btn btn-secondary" %>
-  </p>
+    <%= form.text_area :tueet, placeholder: "Compose new tueet", class: "form-control", rows: "3" %>
+  </div>
+  <div class="form-group text-right">
+    <%= form.submit 'Tueet', class: "btn btn-secondary my-2 bg-primary border-0" %>
+  </div>
 <% end %>

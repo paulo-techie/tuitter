@@ -1,21 +1,68 @@
-<%= render 'form' %>
-
-<table class="m-2">
-  <tr>
-    <th class="text-primary">TUEETS</th>
-    <th colspan="2"></th>
-  </tr>
-
-  <% @tueets.each do |tueet| %>
-    <% u = User.find(tueet.user_id) %>
-    <tr class="tuit-body d-block">
-      <td>
-        <strong class="text-capitalize"><%= u.fullname %>&nbsp;</strong>
-        @<%= u.username %> · 
-         <small><%= time_ago_in_words(tueet.created_at) %></small>
-        <br/>
-        <%= tueet.tueet %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="col-sm-2 p-0 m-0 list-group-item left-bar">
+      <div class="d-flex p-0 m-1 text-light">
+        <div class="text-center w-50">
+          <div class="card-body m-0 p-0">
+            <h6 class="card-title m-0"><%= current_user.following.count %></h6>
+            <p class="card-text"><small>Following</small></p>  
+          </div>
+        </div>
+        <div class="text-center w-50">
+          <div class="card-body m-0 p-0">
+            <h6 class="card-title m-0"><%= current_user.followers.count %></h6>
+            <p class="card-text"><small>Followers</small></p>  
+          </div>
+        </div>
+      </div>
+      </div>
+  <div class="col-sm-1 p-0 m-0 tuit-title">
+    <h6 class="m-3"><strong>TUEETS</strong></h6>
+  </div>
+  <div class="col-sm-7 p-0 m-0 border border-left-0"></div>
+  <div class="col-sm-2 p-0 m-0 border">
+    <h6 class="m-3">WHO TO FOLLOW</h6>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2 p-0 m-0 left-bar-2">
+    <ul class="list-group m-0 p-0">
+      <li class="list-group-item action active left-bar-2">
+        <i class="fa fa-home" aria-hidden="true"></i>HOME</li>
+      <li class="list-group-item left-bar-2">
+        <i class="fa fa-user" aria-hidden="true"></i>PROFILE</li>
+      <li class="list-group-item left-bar-2">
+        <i class="fa fa-users" aria-hidden="true"></i>FOLLOWERS</li>
+      <li class="list-group-item left-bar-2">
+        <i class="fa fa-users" aria-hidden="true"></i>FOLLOWING</li>
+      <li class="list-group-item left-bar-2">
+      <% if current_user %><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT'.html_safe, 
+        logout_path, class: "text-decoration-none text-light" %>  
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-8 p-0 m-0">
+    <div class="m-3">
+    <ul class="list-group my-3">
+      <li class="list-group-item"><%= render 'form' %></li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item text-primary"><h6 class="mb-1"><strong><%= @tueets.count %> TUEETS</strong></h6></li>
+      <% @tueets.each do |tueet| %>
+      <% u = User.find(tueet.user_id) %>
+      <li class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <p><strong class="mb-1"><%= u.fullname %>&nbsp;</strong> 
+          @<%= u.username %></p>
+          <small class="text-muted"><%= time_ago_in_words(tueet.created_at) %></small>
+        </div>
+        <p class="mb-1"><%= tueet.tueet %></p>
+        <% end %>
+      </li>
+    </ul>
+    </div>
+  </div> 
+  <div class="col-sm-2 m-0 p-0 border">
+    <%= render 'index' %>
+  </div>
+</div>

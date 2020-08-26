@@ -1,6 +1,7 @@
 class TueetsController < ApplicationController
   def index
     @tueets = Tueet.all.order("created_at DESC")
+    @users = User.all
   end
 
   def show

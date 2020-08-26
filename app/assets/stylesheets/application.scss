@@ -20,7 +20,20 @@
  $tuit-color: #1DA1F2;
 
  body {
+  align-items: center;
+  height: 100%;
+}
+
+ body,
+ .rt-bar {
    background-color: #efefef;
+   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",
+   Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji",
+   "Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+ }
+
+ textarea {
+   resize: none;
  }
 
  .bg-primary {
@@ -34,11 +47,23 @@
  .fa {
    margin-left : 10px;
    margin-right : 10px;
-   color: $dark-color;
  }
+
+  .form-signin {
+    background-color: lighten($tuit-color, 90%);
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    width: 100%;
+}
 
  .left-bar {
   background-color: $dark-color;
+ }
+
+ .left-bar-2 {
+  background-color: lighten($dark-color, 3%);
+  color: $light-color;
  }
 
  .fa-twitter {
@@ -46,13 +71,11 @@
    font-size: 150%;
  }
 
- .tuit-body {
-  background-color: #fff ;
-  border-top: 1px solid $light-color;
-  padding-top: 15px;
-  padding-bottom: 15px;
+ .tuit-title {
+  border-color: $tuit-color ;
+  border-bottom-style: solid;
  }
 
- .tuit-body:hover {
+ .list-group-item-action:hover {
   background-color: lighten($tuit-color, 42%) !important;
  }
