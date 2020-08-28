@@ -1,12 +1,100 @@
-<p>
-  <strong>Fullname:</strong>
-  <%= @user.fullname %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+  <div class="col-sm-2 p-0 m-0 list-group-item left-bar">
+      <div class="d-flex p-0 m-1 left-bar">
+        <div class="text-center w-50">
+          <div class="card-body ml-3 p-0">
+            <h5 class="card-title font-weight-bold m-0"><%= current_user.following.count %></h5>
+            <p class="card-text"><small>Following</small></p>  
+          </div>
+        </div>
+        <div class="text-center w-50">
+          <div class="card-body mr-3 p-0">
+            <h5 class="card-title font-weight-bold m-0"><%= @user.followers.count %></h5>
+            <p class="card-text"><small>Followers</small></p>  
+          </div>
+        </div>
+      </div>
+      <ul class="list-group m-0 p-0">
+        <li class="list-group-item left-bar-2">
+          <%= link_to '<i class="fa fa-home" aria-hidden="true"></i>HOME'.html_safe, user_tueets_path(current_user),
+          class: "text-decoration-none left-bar-2" %></li>
+        <li class="list-group-item  action active left-bar-2">
+          <i class="fa fa-user" aria-hidden="true"></i>PROFILE</li>
+        <li class="list-group-item left-bar-2">
+          <i class="fa fa-users" aria-hidden="true"></i>FOLLOWERS</li>
+        <li class="list-group-item left-bar-2">
+          <i class="fa fa-users" aria-hidden="true"></i>FOLLOWING</li>
+        <li class="list-group-item left-bar-2">
+        <% if current_user %><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT'.html_safe, 
+          logout_path, class: "text-decoration-none left-bar-2" %>  
+        </li>
+        <% end %>
+      </ul>
+  </div>
+  <div class="col-sm-8 m-0 p-0">
+         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+  </div>
+  <div class="col-sm-2 p-0 m-0 border">
+    <div class="col d-flex text-center">
+      <div class="col">      
+        <svg class="bd-placeholder-img rounded-circle mt-1" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h6 class="mb-0 mt-1 font-weight-bold"><%= @user.fullname %></h6>
+        <p class="my-0">@<%= @user.username %></p>
+        <p><a class="btn btn-sm btn-primary m-1" href="#" role="button">Follow</a></p>
+      </div>
+    </div>
+    <div class="d-flex p-0 text-center rt-bar">
+        <div class="card-body flex-1 m-0 p-0 border">
+          <h5 class="card-title m-0 font-weight-bold"><%= @tueets.count %></h5>
+          <p class="card-text text-mute"><small>Tueets</small></p>  
+        </div>
+        <div class="card-body flex-1 m-0 p-0 border">
+          <h5 class="card-title m-0 font-weight-bold"><%= @user.following.count %></h5>
+          <p class="card-text text-mute"><small>Following</small></p>  
+        </div>
+        <div class="card-body flex-1 m-0 p-0 border">
+          <h5 class="card-title m-0 font-weight-bold"><%= @user.followers.count %></h5>
+          <p class="card-text text-mute"><small>Followers</small></p>  
+        </div>
+    </div>
+  </div>
+</div>
+<div class="row m-0 pr-5">
+  <div class="col-sm-2 left-bar">
+  </div>
+  <div class="col-sm-8 pl-4 mr-5">
+    <div class="col-sm-1 p-0 m-0 tuit-title">
+      <h6 class="m-2"><strong>PROFILE</strong></h6>
+    </div>
+    <div class="col-sm-7">
+    </div>
+    <div class="col m-0 p-0">
+      <ul class="list-group">
+        <li class="list-group-item text-primary"><h6 class="mb-1"><strong>ALL TUEETS</strong></h6></li>
+        <% @tueets.each do |tueet| %>
+        <% u = User.find(tueet.user_id) %>
+        <li class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <p><strong class="mb-1"><%= u.fullname %>&nbsp;</strong> 
+            @<%= u.username %></p>
+            <small class="text-muted"><%= time_ago_in_words(tueet.created_at) %></small>
+          </div>
+          <p class="mb-1"><%= tueet.tueet %></p>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col m-0 p-0 border-left">
+    <h6 class="m-2">FOLLOWED BY</h6>
+    <%= render 'index' %> 
+  </div>
+</div>
+<%
+=begin%>
+ 
+      <%= begin %>
+        <li class="list-group-item"><%= render 'tueets/form', user_id: current_user.id %></li>  
+        <%= end %> 
+<%
+=end%>

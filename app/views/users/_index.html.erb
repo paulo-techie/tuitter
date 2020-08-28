@@ -1,5 +1,5 @@
-<% @users.each do |user| %>
-  <% if !(user.in?(current_user.following)) && current_user != user %>
+<% if @user.followers %>
+<% @user.followers.each do |user| %>
     <%= link_to user_path(user.id) do %>
       <div class="d-flex p-2 flex-row-nowrap text-decoration-none">
         <%= image_tag('tuitter-egg.jpg', size: "48x48", class: "mr-2 img-circle") %>

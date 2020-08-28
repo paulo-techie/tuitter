@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-sm-2 p-0 m-0 list-group-item left-bar">
-      <div class="d-flex p-0 m-1 text-light">
+      <div class="d-flex p-0 m-1 left-bar">
         <div class="text-center w-50">
-          <div class="card-body m-0 p-0">
-            <h6 class="card-title m-0"><%= current_user.following.count %></h6>
+          <div class="card-body ml-3 p-0">
+            <h5 class="card-title m-0"><%= current_user.following.count %></h5>
             <p class="card-text"><small>Following</small></p>  
           </div>
         </div>
         <div class="text-center w-50">
-          <div class="card-body m-0 p-0">
-            <h6 class="card-title m-0"><%= current_user.followers.count %></h6>
+          <div class="card-body mr-3 p-0">
+            <h5 class="card-title m-0"><%= current_user.followers.count %></h5>
             <p class="card-text"><small>Followers</small></p>  
           </div>
         </div>
@@ -36,7 +36,7 @@
         <i class="fa fa-users" aria-hidden="true"></i>FOLLOWING</li>
       <li class="list-group-item left-bar-2">
       <% if current_user %><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT'.html_safe, 
-        logout_path, class: "text-decoration-none text-light" %>  
+        logout_path, class: "text-decoration-none left-bar-2" %>  
       </li>
       <% end %>
     </ul>

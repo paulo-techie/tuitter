@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_is_owner, only: [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @tueets = set_user.tueets
   end
 
   # GET /users/new
@@ -71,5 +73,9 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:fullname, :username)
+    end
+
+    def current_is_owner
+      redirect_to user_tueets_path(current_user) if current_user != set_user
     end
 end

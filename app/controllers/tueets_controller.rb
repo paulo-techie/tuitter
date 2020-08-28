@@ -1,4 +1,6 @@
 class TueetsController < ApplicationController
+  before_action :require_current_user
+
   def index
     @tueets = Tueet.all.order("created_at DESC")
     @users = User.all
@@ -22,5 +24,9 @@ class TueetsController < ApplicationController
   private
     def tueet_params
       params.require(:tueet).permit(:tueet)
+    end
+
+    def require_current_user
+      redirect_to login_path unless current_user
     end
 end
