@@ -2,7 +2,7 @@
 <% @user.followers.each do |user| %>
     <%= link_to user_path(user.id) do %>
       <div class="d-flex p-2 flex-row-nowrap text-decoration-none">
-        <%= image_tag('tuitter-egg.jpg', size: "48x48", class: "mr-2 img-circle") %>
+        <%= image_tag user.photo.url(:thumb) %>
         <h6 class="text-capitalize rt-bar"><%= user.fullname %></h6>
       </div>
     <% end %>

@@ -32,12 +32,24 @@
       </ul>
   </div>
   <div class="col-sm-8 m-0 p-0">
-         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+    <ul class="list-group m-3">
+      <li class="list-group-item">
+        <%= form_with scope: :tueet, url: user_tueets_path(@user), local: true do |form| %>
+        <div class="form-group">
+          <%= form.label 'TUEET SOMETHING', class: "text-secondary h6" %><br>
+          <%= form.text_area :tueet, value: "@"+@user.username+" ", class: "form-control", rows: "3" %>
+        </div>
+        <div class="form-group text-right">
+          <%= form.submit 'Tueet', class: "btn btn-secondary my-2 bg-primary border-0" %>
+        </div>
+        <% end %> 
+      </li>
+    </ul>
   </div>
   <div class="col-sm-2 p-0 m-0 border">
     <div class="col d-flex text-center">
-      <div class="col">      
-        <svg class="bd-placeholder-img rounded-circle mt-1" width="125" height="125" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+      <div class="col"> 
+        <%= image_tag @user.photo.url(:profilepic) %>
         <h6 class="mb-0 mt-1 font-weight-bold"><%= @user.fullname %></h6>
         <p class="my-0">@<%= @user.username %></p>
         <p><a class="btn btn-sm btn-primary m-1" href="#" role="button">Follow</a></p>
@@ -90,11 +102,4 @@
     <%= render 'index' %> 
   </div>
 </div>
-<%
-=begin%>
- 
-      <%= begin %>
-        <li class="list-group-item"><%= render 'tueets/form', user_id: current_user.id %></li>  
-        <%= end %> 
-<%
-=end%>
+

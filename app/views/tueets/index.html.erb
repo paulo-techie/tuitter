@@ -56,7 +56,7 @@
           @<%= u.username %></p>
           <small class="text-muted"><%= time_ago_in_words(tueet.created_at) %></small>
         </div>
-        <p class="mb-1"><%= tueet.tueet %></p>
+        <p class="mb-1"><span><%= image_tag u.photo.url(:thumb) %></span><%= tueet.tueet %></p>
         <% end %>
       </li>
     </ul>
