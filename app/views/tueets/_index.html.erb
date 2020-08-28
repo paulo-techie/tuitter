@@ -1,9 +1,9 @@
 <% @users.each do |user| %>
   <% if !(user.in?(current_user.following)) && current_user != user %>
-    <%= link_to user_path(user.id) do %>
-      <div class="d-flex p-2 flex-row-nowrap text-decoration-none">
-        <%= image_tag user.photo.url(:thumb) %>
-        <h6 class="text-capitalize rt-bar"><%= user.fullname %></h6>
+    <%= link_to user_path(user.id), class: "text-decoration-none rt-bar align-center" do %>
+      <div class="d-flex p-2">
+        <%= image_tag user.photo.url(:thumb), class: "rounded-circle mr-3" %>
+        <h6 class="text-secondary"><%= user.fullname.upcase %></h6>
       </div>
     <% end %>
   <% end %>

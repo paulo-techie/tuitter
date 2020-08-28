@@ -47,13 +47,16 @@
     </ul>
   </div>
   <div class="col-sm-2 p-0 m-0 border">
-    <div class="col d-flex text-center">
+    <div class="col text-center">
       <div class="col"> 
-        <%= image_tag @user.photo.url(:profilepic) %>
+        <%= image_tag @user.photo.url(:profilepic), class: "rounded-circle mr-3" %>
         <h6 class="mb-0 mt-1 font-weight-bold"><%= @user.fullname %></h6>
-        <p class="my-0">@<%= @user.username %></p>
-        <p><a class="btn btn-sm btn-primary m-1" href="#" role="button">Follow</a></p>
-      </div>
+        <p class="my-0">@<%= @user.username%></p>
+        <p><% if !(current_user.follow @user.id) %>
+        <%= link_to '<a class="btn btn-primary m-1">Follow</a>'.html_safe, follow_user_path(@user) %>
+        <% else %>
+        <i class="badge badge-pill bg-secondary text-decoration-none m-1">Follows You</i>
+        <% end %></p>
     </div>
     <div class="d-flex p-0 text-center rt-bar">
         <div class="card-body flex-1 m-0 p-0 border">

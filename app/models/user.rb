@@ -5,7 +5,7 @@ class User < ApplicationRecord
             length: { maximum: 20 },
             format: { with: /\A[a-zA-Z]+\z/,
             message: "only allows letters" }
-  has_attached_file :photo, :styles => { profilepic: "125x125#", thumb: "48x48#" }, default_url: "/images/:style/tuitter-egg.jpg"
+  has_attached_file :photo, :styles => { profilepic: "125x125#", thumb: "48x48#" }, default_url: "/app/assets/images/tuitter-egg.jpg"
             # Validate content type
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def follow(user_id)
-    following_relationships.create(following_id: user_id)
+    following_relationships.build(following_id: user_id)
   end
 
   def unfollow(user_id)
