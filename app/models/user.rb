@@ -5,6 +5,10 @@ class User < ApplicationRecord
             length: { maximum: 20 },
             format: { with: /\A[a-zA-Z]+\z/,
             message: "only allows letters" }
+  has_attached_file :photo, :styles => { profilepic: "125x125#", thumb: "48x48#" }, default_url: "/images/:style/tuitter-egg.jpg"
+            # Validate content type
+  validates_attachment_content_type :photo, content_type: /\Aimage/
+
   has_many  :tueets, dependent: :destroy
   before_save :format_username
 

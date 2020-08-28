@@ -5,6 +5,7 @@ ruby '2.7.1'
 gem 'bootstrap', '~> 5.0.0.alpha1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'rubocop', '~>0.81.0'
+gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
