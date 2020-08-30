@@ -3,7 +3,7 @@ class TueetsController < ApplicationController
 
   def index
     @tueets = Tueet.all.order("created_at DESC")
-    @users = User.all
+    @users = User.all.order("created_at DESC")
   end
 
   def show

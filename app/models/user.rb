@@ -23,11 +23,11 @@ class User < ApplicationRecord
   end
 
   def self.find_user_by(value)
-    where([":username = value", {value: value}]).first
+    where([":id = value", {value: value}]).first
   end
 
   def follow(user_id)
-    following_relationships.build(following_id: user_id)
+    following_relationships.create(following_id: user_id)
   end
 
   def unfollow(user_id)
