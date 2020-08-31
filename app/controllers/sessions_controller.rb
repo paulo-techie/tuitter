@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_username(params[:username])
-
-    render 'new', notice: 'Invalid login' and return unless user
+    flash[:errors] = 'Invalid username. Try again!'
+    render 'new' and return unless user
     session[:user_id] = user.id
  
     redirect_to user_tueets_path(user)

@@ -102,10 +102,13 @@
       <h6 class="ml-3 mt-3 text-left">FOLLOWED BY</h6>
       <% if @user.followers %>
         <% @user.followers.each do |user| %>
-          <%= link_to user_path(user.id), class: "text-decoration-none rt-bar align-center" do %>
-            <div class="d-flex p-2">
+          <%= link_to user_path(user.id), class: "text-decoration-none rt-bar" do %>
+            <div class="d-flex p-2 border-top">
               <%= image_tag user.photo.url(:thumb), class: "rounded-circle mr-3" %>
-              <h6 class="text-secondary"><%= user.fullname.upcase %></h6>
+              <div>
+                <h6 class="text-secondary m-0 p-0"><%= user.fullname.upcase %></h6>
+                <p class="text-secondary m-0 p-0">@<%= user.username %></p>
+              </div>
             </div>
           <% end %>
         <% end %>

@@ -2,8 +2,16 @@
 <%= form_tag sessions_path do %>
   <h1 class="my-2 text-primary font-weight-bold">Tuitter</h1>
   <%= image_tag('tuitwhitelogo.png') %>
-
   <h4 class="my-3 font-weight-bold">Sign in</h4>
+
+ 
+    <% if flash[:errors] %>
+    <ul class="alert alert-danger m-1" role="alert">
+      <li class="ml-2 list-unstyled"><%= flash[:errors] %></li>
+    <% end %>
+    </ul>
+    <br/>
+  
   <p><%= text_field_tag :username, nil, placeholder: "Username" %></p>
   <p><%= submit_tag "Log in", class: "btn btn-sm bg-primary text-light border-0" %></p>
   <br/>
