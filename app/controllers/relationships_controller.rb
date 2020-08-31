@@ -2,7 +2,9 @@ class RelationshipsController < ApplicationController
   before_action :current_user
 
   def follow_user
-    current_user.follow(clicked_id)
+    if User.find(clicked_id) != current_user
+      current_user.follow(clicked_id)
+    end
     redirect_to user_path(clicked_id)
   end
 

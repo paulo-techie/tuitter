@@ -56,33 +56,37 @@
         <li class="list-group-item text-primary"><h6 class="mb-1"><strong>ALL TUEETS</strong></h6></li>
         <% @tueets.each do |tueet| %>
         <% u = User.find(tueet.user_id) %>
-        <li class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <p><strong class="mb-1"><%= u.fullname %>&nbsp;</strong> 
-            @<%= u.username %></p>
-            <small class="text-muted"><%= time_ago_in_words(tueet.created_at) %></small>
+        <li class="list-group-item-action list-group-item d-flex lh-condensed">
+          <p class="col-sm-1 m-0 p-0"><%= image_tag u.photo.url(:thumb), class: "rounded-circle" %></p>
+          <div class="d-flex col-sm-11 justify-content-between">
+            <div>
+              <p class="my-1"><strong><%= u.fullname %>&nbsp;</strong><span>@<%= u.username %></span></p>
+              <small class="text-muted"><%= tueet.tueet %></small>
+            </div>
+            <span class="text-muted"><%= time_ago_in_words(tueet.created_at) %></span>
           </div>
-          <p class="mb-1"><%= tueet.tueet %></p>
-          <% end %>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>
   <div class="col-sm-2 p-0 m-0 border">
-    <div class="col text-center">
-      <div class="col">
+    <div class="col">
+      <div class="col m-2 text-center">
         <p><% if @user.in?(current_user.followers) %>
               <small class="badge badge-pill bg-secondary text-decoration-none mt-1">Follows You</small>
               <% end %></p>
         <%= image_tag @user.photo.url(:profilepic), class: "rounded-circle" %>
         <h6 class="mb-0 mt-1 font-weight-bold"><%= @user.fullname %></h6>
         <p class="my-0">@<%= @user.username%></p>
+        <% if @user != current_user %>
         <p><% if @user.in?(current_user.following) %>
-                <%= button_to 'Unfollow', unfollow_user_path(@user), class: "btn btn-sm bg-secondary text-decoration-none m-1" %>
+                <%= button_to 'Unfollow', unfollow_user_path(@user), class: "btn btn-sm bg-secondary text-decoration-none" %>
               <% else %>
                 <%= button_to 'Follow', follow_user_path(@user), class: "btn btn-sm border=0 text-light bg-primary text-decoration-none left-bar-2" %>
               <% end %>
         </p>
+        <% end %>
     </div>
     <div class="d-flex p-0 text-center rt-bar">
         <div class="card-body flex-1 m-0 p-0 border">
@@ -103,13 +107,13 @@
       <% if @user.followers %>
         <% @user.followers.each do |user| %>
           <%= link_to user_path(user.id), class: "text-decoration-none rt-bar" do %>
-            <div class="d-flex p-2 border-top">
-              <%= image_tag user.photo.url(:thumb), class: "rounded-circle mr-3" %>
-              <div>
-                <h6 class="text-secondary m-0 p-0"><%= user.fullname.upcase %></h6>
-                <p class="text-secondary m-0 p-0">@<%= user.username %></p>
-              </div>
+          <div class="list-group-item-action list-group-item d-flex lh-condensed rt-bar p-2 border-left-0">
+            <p class="col-sm-4 m-0 p-0"><%= image_tag user.photo.url(:thumb), class: "rounded-circle" %></p>
+            <div class="col-sm-8">
+              <p class="m-0"><strong><%= user.fullname %></strong></p>
+              <small class="text-muted">@<%= user.username %></small>
             </div>
+          </div>
           <% end %>
         <% end %>
       <% end %>
