@@ -29,11 +29,10 @@
       <li class="list-group-item active left-bar-2 bg-primary border-0">
         <i class="fa fa-home" aria-hidden="true"></i>HOME</li>
       <li class="list-group-item left-bar-2">
-        <i class="fa fa-user" aria-hidden="true"></i>PROFILE</li>
-      <li class="list-group-item left-bar-2">
-        <i class="fa fa-users" aria-hidden="true"></i>FOLLOWERS</li>
-      <li class="list-group-item left-bar-2">
-        <i class="fa fa-users" aria-hidden="true"></i>FOLLOWING</li>
+      <% if current_user %><%= link_to '<i class="fa fa-user" aria-hidden="true"></i>PROFILE'.html_safe,
+        user_path(current_user.id), class: "text-decoration-none left-bar-2" %>
+      </li>
+      <% end %>
       <li class="list-group-item left-bar-2">
       <% if current_user %><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT'.html_safe, 
         logout_path, class: "text-decoration-none left-bar-2" %>  

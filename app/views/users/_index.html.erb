@@ -22,10 +22,6 @@
         <li class="list-group-item active left-bar-2 bg-primary border-0">
           <i class="fa fa-user" aria-hidden="true"></i>PROFILE</li>
         <li class="list-group-item left-bar-2">
-          <i class="fa fa-users" aria-hidden="true"></i>FOLLOWERS</li>
-        <li class="list-group-item left-bar-2">
-          <i class="fa fa-users" aria-hidden="true"></i>FOLLOWING</li>
-        <li class="list-group-item left-bar-2">
         <% if current_user %><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT'.html_safe, 
           logout_path, class: "text-decoration-none left-bar-2" %>  
         </li>
@@ -38,6 +34,7 @@
     </div>
     <div class="col-sm-7">
   </div>
+  
   <ul class="list-group m-3">
     <li class="list-group-item">
       <%= form_with scope: :tueet, url: user_tueets_path(@user), local: true do |form| %>
