@@ -43,6 +43,14 @@
   <div class="col-sm-8 p-0 m-0">
     <div class="m-3">
     <ul class="list-group my-3">
+
+      <% if flash[:errors] %>
+      <li class="alert alert-danger m-1 list-unstyled" role="alert">
+        <span class="ml-2"><%= flash[:errors] %></span>
+      </li>
+      <% flash.clear %>
+      <% end %>
+
       <li class="list-group-item"><%= render 'form' %></li>
     </ul>
     <ul class="list-group">

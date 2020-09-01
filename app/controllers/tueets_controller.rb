@@ -17,7 +17,7 @@ class TueetsController < ApplicationController
     @tueet = Tueet.new(tueet_params)
     @tueet.user_id = current_user.id
 
-    @tueet.save
+    flash[:errors] = 'Invalid tueet! Try again ...' unless @tueet.save
     redirect_to user_tueets_path
   end
 

@@ -36,6 +36,14 @@
   </div>
   
   <ul class="list-group m-3">
+
+    <% if flash[:errors] %>
+    <li class="alert alert-danger m-1 list-unstyled" role="alert">
+      <span class="ml-2"><%= flash[:errors] %></span>
+    </li>
+    <% flash.clear %>
+    <% end %>
+  
     <li class="list-group-item">
       <%= form_with scope: :tueet, url: user_tueets_path(@user), local: true do |form| %>
       <div class="form-group">

@@ -21,15 +21,15 @@
 
  body {
   align-items: center;
+  background-color: #efefef;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",
+  Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji",
+  "Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   height: 100%;
 }
 
- body,
  .rt-bar {
    background-color: #efefef;
-   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",
-   Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji",
-   "Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
  }
 
  textarea {
@@ -69,7 +69,6 @@
     color: $tuit-color !important;
   }
  }
-
 
  .fa-twitter {
    margin-left: 20px;

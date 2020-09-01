@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_username(params[:username])
-    flash[:errors] = 'Invalid username. Try again!'
+    flash[:errors] = 'Invalid username! Try again ...' if !user
     render 'new' and return unless user
     session[:user_id] = user.id
  
