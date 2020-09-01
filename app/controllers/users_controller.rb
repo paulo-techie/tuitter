@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :current_is_owner, only: [:edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :current_is_owner, only: %i[edit update destroy]
 
   # GET /users
   # GET /users.json
@@ -20,8 +20,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   # POST /users.json
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        session[:user_id] = @user.id 
+        session[:user_id] = @user.id
         format.html { redirect_to user_tueets_path(@user.id) }
         format.json { render :show, status: :created, location: @user }
       else
@@ -65,17 +64,18 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:fullname, :username, :photo)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def current_is_owner
-      redirect_to user_tueets_path(current_user) if current_user != set_user
-    end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:fullname, :username, :photo)
+  end
+
+  def current_is_owner
+    redirect_to user_tueets_path(current_user) if current_user != set_user
+  end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe 'Users', type: :request do
   describe 'POST #create' do
     context 'when username is invalid' do
       it 'renders the page with error' do
