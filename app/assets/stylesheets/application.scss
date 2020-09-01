@@ -12,74 +12,85 @@
  *
  */
 
- @import "bootstrap";
- @import "font-awesome";
+@import "bootstrap";
+@import "font-awesome";
 
- $dark-color: #555;
- $light-color: #ddd;
- $tuit-color: #1DA1F2;
+$dark-color: #555;
+$light-color: #ddd;
+$tuit-color: #1da1f2;
 
- body {
+body {
   align-items: center;
   background-color: #efefef;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",
-  Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji",
-  "Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
   height: 100%;
 }
 
- .rt-bar {
-   background-color: #efefef;
- }
-
- textarea {
-   resize: none;
- }
-
- .bg-primary {
-   background-color: $tuit-color !important;
- }
-
- .text-primary {
-   color: $tuit-color !important;
- }
-
- .fa {
-   margin-left : 10px;
-   margin-right : 10px;
- }
-
-  .form-signin {
-    background-color: lighten($tuit-color, 90%);
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-    width: 100%;
+.rt-bar {
+  background-color: #efefef;
 }
 
- .left-bar {
+textarea {
+  resize: none;
+}
+
+.bg-primary {
+  background-color: $tuit-color !important;
+}
+
+.text-primary {
+  color: $tuit-color !important;
+}
+
+.fa {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.form-signin {
+  background-color: lighten($tuit-color, 90%);
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  width: 100%;
+}
+
+.left-bar {
   background-color: $dark-color;
   color: $light-color;
- }
+}
 
- .left-bar-2 {
+.left-bar-2 {
   background-color: lighten($dark-color, 3%);
   color: $light-color;
+
   .left-bar-2:hover {
     color: $tuit-color !important;
   }
- }
+}
 
- .fa-twitter {
-   margin-left: 20px;
-   font-size: 150%;
- }
+.fa-twitter {
+  margin-left: 20px;
+  font-size: 150%;
+}
 
- .tuit-title {
-  border-color: $tuit-color ;
+.tuit-title {
+  border-color: $tuit-color;
   border-bottom-style: solid;
- }
+}
 
- .list-group-item-action:hover {
+.list-group-item-action:hover {
   background-color: lighten($tuit-color, 42%) !important;
- }
+}
