@@ -84,11 +84,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def user_params
-    params.require(:user).permit(:fullname, :username, :photo)
-  end
-
   def not_logged_in
     redirect_to user_tueets_path(current_user) if current_user
   end
