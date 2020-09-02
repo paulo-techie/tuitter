@@ -80,10 +80,6 @@ class UsersController < ApplicationController
     redirect_to user_tueets_path(current_user) if current_user != set_user
   end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   def not_logged_in
     redirect_to user_tueets_path(current_user) if current_user
   end
