@@ -14,4 +14,9 @@ RSpec.describe User, type: :model do
     subject.fullname = nil
     expect(subject).to_not be_valid
   end
+
+  before { subject.save }
+  it 'should create user' do
+    expect(subject).to be_valid
+  end
 end

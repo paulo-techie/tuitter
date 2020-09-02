@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :not_logged_in, only: %i[new create]
   before_action :set_user, only: %i[show edit update destroy]
   before_action :current_is_owner, only: %i[edit update destroy]
 
@@ -77,5 +78,18 @@ class UsersController < ApplicationController
 
   def current_is_owner
     redirect_to user_tueets_path(current_user) if current_user != set_user
+  end
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:fullname, :username, :photo)
+  end
+
+  def not_logged_in
+    redirect_to user_tueets_path(current_user) if current_user
   end
 end
