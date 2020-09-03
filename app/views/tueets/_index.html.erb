@@ -73,7 +73,7 @@
   </div> 
   <div class="col-sm-2 m-0 p-0 border">
   <% @users.each do |user| %>
-    <% if !(user.in?(current_user.following)) && current_user != user %>
+    <% if not_following_oneself(user) %>
       <%= link_to user_path(user.id), class: "text-decoration-none rt-bar align-center" do %>
         <div class="list-group-item-action list-group-item d-flex lh-condensed rt-bar p-2">
           <p class="col-sm-4 m-0 p-0"><%= image_tag user.photo.url(:thumb), class: "rounded-circle" %></p>
