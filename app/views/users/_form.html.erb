@@ -1,0 +1,32 @@
+ <div class="form-signin mt-2">
+   
+    <%= form_for @user, html: { multipart: true } do |form| %>
+
+    <h1 class="my-2 text-primary font-weight-bold">Tuitter</h1>
+    <%= image_tag('tuitwhitelogo.png') %>
+    <h4 class="my-3 font-weight-bold">Sign up</h4>
+
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h6><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h6>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <h6><%= form.label 'Upload your profile picture:' %></h6>
+      <p><%= form.file_field :photo, class: 'form-control' %></p>
+      <h6><%= form.label 'Upload a top/cover image:' %></h6>
+      <p><%= form.file_field :coverimage, class: 'form-control' %></p
+      <p><%= form.text_field :fullname, placeholder: "Full Name" %></p>
+      <p><%= form.text_field :username, placeholder: "Username" %></p>
+      <p><%= form.submit "Sign up", class: "btn btn-sm bg-primary text-light border-0" %></p>
+      <br/>
+      <h6 class="mb-3 font-weight-bold">Or sign in</h6>
+      <p><%= link_to "Sign in", login_path, class: "btn btn-sm bg-primary text-light border-0" %></p>
+      <% end %>
+</div>
+

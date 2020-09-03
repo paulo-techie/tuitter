@@ -1,0 +1,32 @@
+  
+<div class="row b-1">
+  <nav class="col-sm-2 left-bar">
+  <%= link_to user_path(current_user.id), class: "text-decoration-none" do %>
+    <div class="media d-flex p-2">
+      <i class="media-object mr-2"><%= image_tag current_user.photo.url(:thumb) %></i>
+      <div class="media-body">
+        <h6 class="left-bar my-2"><strong>
+          <% if current_user %><%= current_user.fullname.upcase %></strong>
+        </h6> 
+        <% else %>  
+        <%= link_to "Sign Up", signup_path %>
+        <br/>  
+        <%= link_to "Log In", login_path %>  
+        <% end %> 
+      </div>
+    </div> 
+  <% end %>   
+  </nav>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary col-sm-8">
+    <a class="navbar-brand" href="#"><i class="fa fa-twitter text-light"></i></a>
+  </nav>
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary col-sm-2 d-flex justify-content-between">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="nav-item" href="#"><i class="fa fa-pencil text-secondary" aria-hidden="true"></i></a>
+    <a class="nav-item" href="#"><i class="fa fa-envelope text-secondary" aria-hidden="true"></i></a>
+    <a class="nav-item" href="#"><i class="fa fa-search text-secondary" aria-hidden="true"></i></a>
+    <a class="nav-item" href="#"><i class="fa fa-cog text-secondary" aria-hidden="true"></i></a>
+  </nav>
+</div>

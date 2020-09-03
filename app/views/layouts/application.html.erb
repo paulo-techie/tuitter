@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= render 'layouts/navigation' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

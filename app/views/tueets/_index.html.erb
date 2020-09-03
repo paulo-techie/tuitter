@@ -1,0 +1,89 @@
+<div class="row">
+  <div class="col-sm-2 p-0 m-0 list-group-item left-bar">
+      <div class="d-flex p-0 m-1 left-bar">
+        <div class="text-center w-50">
+          <div class="card-body ml-3 p-0">
+            <h5 class="card-title m-0"><%= current_user.following.count %></h5>
+            <p class="card-text"><small>Following</small></p>  
+          </div>
+        </div>
+        <div class="text-center w-50">
+          <div class="card-body mr-3 p-0">
+            <h5 class="card-title m-0"><%= current_user.followers.count %></h5>
+            <p class="card-text"><small>Followers</small></p>  
+          </div>
+        </div>
+      </div>
+      </div>
+  <div class="col-sm-1 p-0 m-0 tuit-title">
+    <h6 class="m-3"><strong>TUEETS</strong></h6>
+  </div>
+  <div class="col-sm-7 p-0 m-0 border border-left-0"></div>
+  <div class="col-sm-2 p-0 m-0 border">
+    <h6 class="m-3">WHO TO FOLLOW</h6>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2 p-0 m-0 left-bar-2">
+    <ul class="list-group m-0 p-0">
+      <li class="list-group-item active left-bar-2 bg-primary border-0">
+        <i class="fa fa-home" aria-hidden="true"></i>HOME</li>
+      <li class="list-group-item left-bar-2">
+      <% if current_user %><%= link_to '<i class="fa fa-user" aria-hidden="true"></i>PROFILE'.html_safe,
+        user_path(current_user.id), class: "text-decoration-none left-bar-2" %>
+      </li>
+      <% end %>
+      <li class="list-group-item left-bar-2">
+      <% if current_user %><%= link_to '<i class="fa fa-sign-out" aria-hidden="true"></i>LOG OUT'.html_safe, 
+        logout_path, class: "text-decoration-none left-bar-2" %>  
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-8 p-0 m-0">
+    <div class="m-3">
+    <ul class="list-group my-3">
+
+      <% if flash[:errors] %>
+      <li class="alert alert-danger m-1 list-unstyled" role="alert">
+        <span class="ml-2"><%= flash[:errors] %></span>
+      </li>
+      <% flash.clear %>
+      <% end %>
+
+      <li class="list-group-item"><%= render 'form' %></li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item text-primary"><h6 class="mb-1"><strong><%= @tueets.count %> TUEETS</strong></h6></li>
+      <% @tueets.each do |tueet| %>
+      <% u = User.find(tueet.user_id) %>
+        <li class="list-group-item-action list-group-item d-flex lh-condensed">
+          <p class="col-sm-1 m-0 p-0"><%= image_tag u.photo.url(:thumb), class: "rounded-circle" %></p>
+          <div class="d-flex col-sm-11 justify-content-between">
+            <div>
+              <p class="my-1"><strong><%= u.fullname %>&nbsp;</strong><span>@<%= u.username %></span></p>
+              <small class="text-muted"><%= tueet.tueet %></small>
+            </div>
+            <span class="text-muted"><%= time_ago_in_words(tueet.created_at) %></span>
+          </div>
+        </li>
+        <% end %>
+    </ul>
+    </div>
+  </div> 
+  <div class="col-sm-2 m-0 p-0 border">
+  <% @users.each do |user| %>
+    <% if not_following_oneself(user) %>
+      <%= link_to user_path(user.id), class: "text-decoration-none rt-bar align-center" do %>
+        <div class="list-group-item-action list-group-item d-flex lh-condensed rt-bar p-2">
+          <p class="col-sm-4 m-0 p-0"><%= image_tag user.photo.url(:thumb), class: "rounded-circle" %></p>
+          <div class="col-sm-8">
+            <p class="m-0"><strong><%= user.fullname %></strong></p>
+            <small class="text-muted">@<%= user.username %></small>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
